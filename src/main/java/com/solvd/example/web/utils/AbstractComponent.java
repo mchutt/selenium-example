@@ -12,21 +12,17 @@ import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
-public abstract class AbstractBasePage {
-    private static Logger logger = LoggerFactory.getLogger(AbstractBasePage.class);
+public abstract class AbstractComponent {
 
-    protected WebDriver driver;
+    private static Logger logger = LoggerFactory.getLogger(AbstractComponent.class);
 
-    public AbstractBasePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    protected WebElement root;
+
+    public AbstractComponent(WebElement root) {
+        this.root = root;
+        PageFactory.initElements(root, this);
     }
 
-    public void openPage(String url){
-        driver.get(url);
-        driver.manage().window().maximize();
-        logger.info("Page opened {}", getClass().getSimpleName());
-    }
     protected void clickElement(WebElement element){
         logger.debug("clickElement method invoked");
         waitElement(element);
@@ -45,7 +41,7 @@ public abstract class AbstractBasePage {
     }
     protected void waitElement(WebElement element){
         try {
-            Wait<WebDriver> wait = new FluentWait<>(driver)
+            Wait<WebDriver> wait = new FluentWait<>(WebDriverProvider.getDriver())
                     .pollingEvery(Duration.ofMillis(250))
                     .withTimeout(Duration.ofSeconds(5))
                     .ignoring(NoSuchElementException.class);
