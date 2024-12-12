@@ -20,14 +20,15 @@ public class SauceLoginPage extends AbstractBasePage{
     }
 
     public void typePassword(String pass) {
-        userPasswordInput.sendKeys(pass);
+        sendKeysToElement(userPasswordInput, pass);
     }
 
     public void typeUserName(String username) {
-        userNameInput.sendKeys(username);
+        sendKeysToElement(userNameInput, username);
     }
+
     public SauceProductsPage clickOnLoginButton(){
-        loginButton.click();
+        clickElement(loginButton);
         return new SauceProductsPage(driver);
     }
 }

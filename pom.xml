@@ -51,16 +51,18 @@
       <version>7.10.2</version>
       <scope>test</scope>
     </dependency>
+
+
+<!--    https://howtodoinjava.com/log4j2/log4j2-with-slf4j/-->
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>2.0.16</version>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.20.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j2-impl</artifactId>
-      <version>2.24.2</version>
-      <scope>test</scope>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.20.0</version>
     </dependency>
 
   </dependencies>

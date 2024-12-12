@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SauceProductsPage extends AbstractBasePage{
-    private WebDriver driver;
     @FindBy(css = ".inventory_item")
     private List<WebElement> productCardElements;
 
