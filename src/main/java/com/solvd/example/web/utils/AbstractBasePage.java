@@ -1,4 +1,4 @@
-package com.solvd.example.web.pages;
+package com.solvd.example.web.utils;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;

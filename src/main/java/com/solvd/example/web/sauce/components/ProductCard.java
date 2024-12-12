@@ -1,4 +1,4 @@
-package com.solvd.example.web.components;
+package com.solvd.example.web.sauce.components;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

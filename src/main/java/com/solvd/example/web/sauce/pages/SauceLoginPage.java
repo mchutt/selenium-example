@@ -1,11 +1,12 @@
-package com.solvd.example.web.pages;
+package com.solvd.example.web.sauce.pages;
 
+import com.solvd.example.web.utils.AbstractBasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SauceLoginPage extends AbstractBasePage{
+public class SauceLoginPage extends AbstractBasePage {
 
     @FindBy(css = "#user-name")
     private WebElement userNameInput;

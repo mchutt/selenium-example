@@ -1,8 +1,9 @@
-package com.solvd.example.web;
+package com.solvd.example.web.sauce;
 
-import com.solvd.example.web.components.ProductCard;
-import com.solvd.example.web.pages.SauceLoginPage;
-import com.solvd.example.web.pages.SauceProductsPage;
+import com.solvd.example.web.AbstractTest;
+import com.solvd.example.web.sauce.components.ProductCard;
+import com.solvd.example.web.sauce.pages.SauceLoginPage;
+import com.solvd.example.web.sauce.pages.SauceProductsPage;
 import com.solvd.example.web.utils.WebDriverProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
