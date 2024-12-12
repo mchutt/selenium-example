@@ -1,17 +1,16 @@
 package com.solvd.example.web.sauce.components;
 
+import com.solvd.example.web.utils.AbstractComponent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class ProductCard {
-    private WebElement root;
+public class ProductCard extends AbstractComponent {
+
     @FindBy(css = ".inventory_item_name")
     private WebElement name;
 
     public ProductCard(WebElement root) {
-        this.root = root;
-        PageFactory.initElements(root, this);
+        super(root);
     }
 
     public String getName(){

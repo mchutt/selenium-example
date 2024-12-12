@@ -4,7 +4,6 @@ import com.solvd.example.web.utils.AbstractBasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class SauceLoginPage extends AbstractBasePage {
 
@@ -17,7 +16,6 @@ public class SauceLoginPage extends AbstractBasePage {
 
     public SauceLoginPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
     public void typePassword(String pass) {

@@ -4,6 +4,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.Logger;
@@ -18,13 +19,14 @@ public abstract class AbstractBasePage {
 
     public AbstractBasePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void openPage(String url){
         driver.get(url);
         logger.info("Page opened {}", getClass().getSimpleName());
     }
-    public void clickElement(WebElement element){
+    protected void clickElement(WebElement element){
         logger.debug("clickElement method invoked");
         waitElement(element);
 
@@ -32,7 +34,7 @@ public abstract class AbstractBasePage {
         logger.info("Element clicked");
         logger.debug("clickElement method fully executed");
     }
-    public void sendKeysToElement(WebElement element, CharSequence keys){
+    protected void sendKeysToElement(WebElement element, CharSequence keys){
         logger.debug("sendKeys method invoked");
         waitElement(element);
 

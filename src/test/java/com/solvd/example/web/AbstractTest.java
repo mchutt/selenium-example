@@ -16,4 +16,12 @@ public abstract class AbstractTest {
         WebDriverProvider.quitDriver();
     }
 
+    protected void pause(Long millis){
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
