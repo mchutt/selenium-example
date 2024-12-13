@@ -28,15 +28,15 @@ public class ProductCardComponent extends AbstractComponent {
     }
 
     public double getClearPrice(){
-        double cleanPrice=-1.0;
+        double clearPrice=-1.0;
         try {
-            cleanPrice = Double.parseDouble(price.getText().substring(1));
+            clearPrice = Double.parseDouble(price.getText().substring(1));
         }catch (NoSuchElementException ex){
-            logger.info("Price not found for this product card");
+            logger.warn("Price not found for this product card");
         }catch ( NumberFormatException ex){
-            logger.info("Something went wrong while formating price {}", ex.getMessage());
+            logger.warn("Something went wrong while formating price {}", ex.getMessage());
         }
-        return cleanPrice;
+        return clearPrice;
 
     }
 

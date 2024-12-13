@@ -12,6 +12,7 @@ public class AmazonWebsiteTest extends AbstractTest {
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
+        pause(10000L);// to avoid captcha
         page.typeOnSearchInput("iPhone");
         SearchPage searchPage = page.pressEnter();
 
@@ -22,20 +23,22 @@ public class AmazonWebsiteTest extends AbstractTest {
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
+        pause(10000L);// to avoid captcha
         ChangeLanguagePage changeLanguagePage = page.getHeaderComponent().clickOnChangeLanguageButton();
         changeLanguagePage.selectLanguage("es_US");
         changeLanguagePage.clickOnSaveChanges();
 
-        pause(2000L); //TODO replace it for an explicit wait
-        String actualLanguageSentence = page.getHeaderComponent().getActualLanguageSentence();
-        String expectedLanguageSentence = "Elige un idioma para hacer compras. La selección actual es Español. ";
-        Assert.assertEquals(actualLanguageSentence, expectedLanguageSentence, "Language site is not the expected one");
+        String expectedSentence = "Elige un idioma para hacer compras. La selección actual es Español. ";
+        boolean isPresent = page.getHeaderComponent().isSentencePresent(expectedSentence);
+
+        Assert.assertTrue(isPresent, "The language of the website is not as expected. Expected sentence is not present. " + expectedSentence);
     }
     @Test
     public void validateAddingAProductToTheCart(){
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
+        pause(10000L);// to avoid captcha
         page.typeOnSearchInput("iphone 14 pro max");
         SearchPage searchPage = page.pressEnter();
         ProductDetailsPage productDetailsPage = searchPage.getAProduct(0).clickOnProductDetailsButton();
@@ -51,6 +54,7 @@ public class AmazonWebsiteTest extends AbstractTest {
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
+        pause(10000L);// to avoid captcha
         LoginPage loginPage = page.getHeaderComponent().clickOnLoginButton();
         loginPage.typeEmail("sadfsadf324234sdf@sdfsdf.sddf");
         loginPage.clickOnContinueButton();
@@ -59,10 +63,11 @@ public class AmazonWebsiteTest extends AbstractTest {
     }
 
     @Test
-    public void validateSortingProductsByPrice(){
+    public void validateSortingProductsByPrice() {
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
+        pause(10000L); // to avoid captcha
         page.typeOnSearchInput("iPhone");
         SearchPage searchPage = page.pressEnter();
         searchPage.clickOnSortingButton();

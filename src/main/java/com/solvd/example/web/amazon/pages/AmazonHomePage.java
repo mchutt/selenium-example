@@ -23,7 +23,7 @@ public class AmazonHomePage extends AbstractBasePage {
         sendKeysToElement(searchInput, text);
     }
     public SearchPage pressEnter(){
-        sendKeysToElement(searchInput, Keys.ENTER); //TODO create another method to create user interactions
+        sendKeysToElement(searchInput, Keys.ENTER); //TODO create another method to simulate user interactions like Enter
         return new SearchPage(driver);
     }
 

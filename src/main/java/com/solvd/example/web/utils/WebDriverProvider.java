@@ -3,6 +3,8 @@ package com.solvd.example.web.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
+
 public class WebDriverProvider {
     //Create a thread local variable and this value will be read only by this current thread
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
@@ -13,7 +15,9 @@ public class WebDriverProvider {
     }
 
     public static void openBrowser() {
-        driver.set(new ChromeDriver());
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.manage().window().maximize();
+        driver.set(webDriver);
     }
 
     public static void quitDriver() {

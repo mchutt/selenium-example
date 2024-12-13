@@ -6,6 +6,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
@@ -37,11 +39,8 @@ public class SearchPage extends AbstractBasePage {
     }
 
     public List<WebElement> getProductList(){
-        new FluentWait<>(driver)
-                .pollingEvery(Duration.ofMillis(250))
-                .withTimeout(Duration.ofSeconds(5))
-                .until(ExpectedConditions
-                        .presenceOfAllElementsLocatedBy(By.xpath(productXpath)));
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(productXpath)));
         return productList;
     }
 
@@ -52,10 +51,11 @@ public class SearchPage extends AbstractBasePage {
         clickElement(sortByPriceAsc);
     }
     public boolean isProductListSortedByPrice(){
-        List<Double> cleanPrices = getClearPrices();
+        List<Double> clearPrices = getClearPrices();
+        //System.out.println(clearPrices);
 
-        return cleanPrices
-                .equals(cleanPrices
+        return clearPrices
+                .equals(clearPrices
                         .stream()
                         .sorted()
                         .collect(Collectors.toList()));
