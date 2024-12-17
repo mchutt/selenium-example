@@ -1,12 +1,8 @@
 package com.solvd.example.web.utils;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +22,7 @@ public abstract class AbstractComponent {
 
     protected void clickElement(WebElement element){
         logger.debug("clickElement method invoked");
-        //waitElement(element);
+        waitElement(element);
 
         element.click();
         logger.info("Element clicked");
@@ -34,7 +30,7 @@ public abstract class AbstractComponent {
     }
     protected void sendKeysToElement(WebElement element, CharSequence keys){
         logger.debug("sendKeys method invoked");
-        //waitElement(element);
+        waitElement(element);
 
         element.sendKeys(keys);
         logger.info("Keys '{}' sent ", keys);

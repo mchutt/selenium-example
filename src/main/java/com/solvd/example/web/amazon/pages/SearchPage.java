@@ -39,16 +39,20 @@ public class SearchPage extends AbstractBasePage {
     }
 
     public List<WebElement> getProductList(){
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(productXpath)));
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOfAllElements(productList));
         return productList;
     }
 
     public void clickOnSortingButton(){
-        clickElement(sortingButton);
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(sortingButton));
+        sortingButton.click();
     }
     public void clickOnSortByPriceAsc(){
-        clickElement(sortByPriceAsc);
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(sortByPriceAsc));
+        sortByPriceAsc.click();
     }
     public boolean isProductListSortedByPrice(){
         List<Double> clearPrices = getClearPrices();

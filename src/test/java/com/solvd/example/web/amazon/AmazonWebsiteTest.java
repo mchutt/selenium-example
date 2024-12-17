@@ -1,6 +1,7 @@
 package com.solvd.example.web.amazon;
 
 import com.solvd.example.web.AbstractTest;
+import com.solvd.example.web.amazon.components.ProductCardComponent;
 import com.solvd.example.web.amazon.pages.*;
 import com.solvd.example.web.utils.WebDriverProvider;
 import org.testng.Assert;
@@ -12,7 +13,7 @@ public class AmazonWebsiteTest extends AbstractTest {
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
-        pause(10000L);// to avoid captcha
+//        pause(10000L);// to avoid captcha
         page.typeOnSearchInput("iPhone");
         SearchPage searchPage = page.pressEnter();
 
@@ -23,7 +24,7 @@ public class AmazonWebsiteTest extends AbstractTest {
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
-        pause(10000L);// to avoid captcha
+        //pause(10000L);// to avoid captcha
         ChangeLanguagePage changeLanguagePage = page.getHeaderComponent().clickOnChangeLanguageButton();
         changeLanguagePage.selectLanguage("es_US");
         changeLanguagePage.clickOnSaveChanges();
@@ -31,18 +32,17 @@ public class AmazonWebsiteTest extends AbstractTest {
         String expectedSentence = "Elige un idioma para hacer compras. La selección actual es Español. ";
         boolean isPresent = page.getHeaderComponent().isSentencePresent(expectedSentence);
 
-        Assert.assertTrue(isPresent, "The language of the website is not as expected. Expected sentence is not present. " + expectedSentence);
+        Assert.assertTrue(isPresent, "The language of the website is not as expected. Expected sentence is not present. ");
     }
     @Test
     public void validateAddingAProductToTheCart(){
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
-        pause(10000L);// to avoid captcha
         page.typeOnSearchInput("iphone 14 pro max");
         SearchPage searchPage = page.pressEnter();
-        ProductDetailsPage productDetailsPage = searchPage.getAProduct(0).clickOnProductDetailsButton();
-        productDetailsPage.clickOnAddToCartButton();
+        ProductCardComponent product = searchPage.getAProduct(0);
+        product.clickOnAddToCartButton();
 
         CartPage cartPage = page.getHeaderComponent().clickOnCartButton();
 
@@ -54,7 +54,7 @@ public class AmazonWebsiteTest extends AbstractTest {
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
-        pause(10000L);// to avoid captcha
+        //pause(10000L);// to avoid captcha
         LoginPage loginPage = page.getHeaderComponent().clickOnLoginButton();
         loginPage.typeEmail("sadfsadf324234sdf@sdfsdf.sddf");
         loginPage.clickOnContinueButton();
@@ -67,7 +67,7 @@ public class AmazonWebsiteTest extends AbstractTest {
         AmazonHomePage page = new AmazonHomePage(WebDriverProvider.getDriver());
         page.openPage("https://www.amazon.com/");
 
-        pause(10000L); // to avoid captcha
+        //pause(10000L); // to avoid captcha
         page.typeOnSearchInput("iPhone");
         SearchPage searchPage = page.pressEnter();
         searchPage.clickOnSortingButton();

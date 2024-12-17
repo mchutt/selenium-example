@@ -8,13 +8,13 @@ import org.openqa.selenium.support.FindBy;
 public class ProductDetailsPage extends AbstractBasePage {
 
     @FindBy(css = "#add-to-cart-button")
-    private WebElement addToCartBtton;
+    private WebElement addToCartButton;
 
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
     }
 
     public void clickOnAddToCartButton(){
-        clickElement(addToCartBtton);
+        clickElement(addToCartButton);
     }
 }

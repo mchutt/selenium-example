@@ -47,7 +47,7 @@ public class HeaderComponent extends AbstractComponent {
     public boolean isSentencePresent(String sentence){
         logger.debug("Checking that sentence '{}' is present", sentence);
         try {
-            WebDriverWait wait = new WebDriverWait(WebDriverProvider.getDriver(), Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(WebDriverProvider.getDriver(), Duration.ofSeconds(10));
             wait.until(ExpectedConditions.attributeToBe(changeLanguageButton, "aria-label", sentence));
             logger.debug("Sentence '{}' is present in attribute", sentence);
             return true;
