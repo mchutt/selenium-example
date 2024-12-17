@@ -23,8 +23,10 @@ public class ProductCardComponent extends AbstractComponent {
 
     @FindBy(xpath = ".//a")
     private WebElement productDetailsButton;
+
     @FindBy(xpath = ".//span[@class='a-color-base']")
     private WebElement price; //US$144.95 format
+
     @FindBy(xpath = ".//button")
     private WebElement addToCartButton;
 
@@ -33,27 +35,27 @@ public class ProductCardComponent extends AbstractComponent {
         super(root);
     }
 
-    public ProductDetailsPage clickOnProductDetailsButton(){
+    public ProductDetailsPage clickOnProductDetailsButton() {
         Wait<WebDriver> wait = new WebDriverWait(WebDriverProvider.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(productDetailsButton));
         productDetailsButton.click();
         return new ProductDetailsPage(WebDriverProvider.getDriver());
     }
 
-    public void clickOnAddToCartButton(){
+    public void clickOnAddToCartButton() {
         Wait<WebDriver> wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
         wait.until(driver -> addToCartButton.isEnabled());
     }
 
-    public double getClearPrice(){
-        double clearPrice=-1.0;
+    public double getClearPrice() {
+        double clearPrice = -1.0;
         try {
             clearPrice = Double.parseDouble(price.getText().substring(1));
-        }catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             logger.warn("Price not found for this product card");
-        }catch ( NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             logger.warn("Something went wrong while formating price {}", ex.getMessage());
         }
         return clearPrice;

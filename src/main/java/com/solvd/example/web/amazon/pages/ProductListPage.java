@@ -5,7 +5,6 @@ import com.solvd.example.web.utils.AbstractBasePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,10 +12,10 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SearchPage extends AbstractBasePage {
+public class ProductListPage extends AbstractBasePage {
 
-    private final String productXpath = "//div[@data-component-type='s-search-result']";
-    @FindBy(xpath = productXpath)
+
+    @FindBy(xpath = "//div[@data-component-type='s-search-result']")
     private List<WebElement> productList;
 
     @FindBy(xpath = "//span[@id='a-autoid-0-announce']//span[@class='a-dropdown-prompt']")
@@ -26,7 +25,7 @@ public class SearchPage extends AbstractBasePage {
     private WebElement sortByPriceAsc;
 
 
-    public SearchPage(WebDriver driver) {
+    public ProductListPage(WebDriver driver) {
         super(driver);
     }
 

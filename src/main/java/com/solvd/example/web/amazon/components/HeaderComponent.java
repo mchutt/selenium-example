@@ -1,7 +1,7 @@
 package com.solvd.example.web.amazon.components;
 
 import com.solvd.example.web.amazon.pages.CartPage;
-import com.solvd.example.web.amazon.pages.ChangeLanguagePage;
+import com.solvd.example.web.amazon.pages.LanguageSettingsPage;
 import com.solvd.example.web.amazon.pages.LoginPage;
 import com.solvd.example.web.utils.AbstractComponent;
 import com.solvd.example.web.utils.WebDriverProvider;
@@ -32,9 +32,9 @@ public class HeaderComponent extends AbstractComponent {
         super(root);
     }
 
-    public ChangeLanguagePage clickOnChangeLanguageButton(){
+    public LanguageSettingsPage clickOnChangeLanguageButton(){
         clickElement(changeLanguageButton);
-        return new ChangeLanguagePage(WebDriverProvider.getDriver());
+        return new LanguageSettingsPage(WebDriverProvider.getDriver());
     }
     public CartPage clickOnCartButton(){
         clickElement(cartButton);

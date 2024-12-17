@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverProvider {
+
     //Create a thread local variable and this value will be read only by this current thread
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 

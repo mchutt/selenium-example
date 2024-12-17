@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.time.Duration;
 
 public abstract class AbstractBasePage {
+
     private static Logger logger = LoggerFactory.getLogger(AbstractBasePage.class);
 
     protected WebDriver driver;

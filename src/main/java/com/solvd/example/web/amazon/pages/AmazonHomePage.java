@@ -22,9 +22,9 @@ public class AmazonHomePage extends AbstractBasePage {
     public void typeOnSearchInput(String text){
         sendKeysToElement(searchInput, text);
     }
-    public SearchPage pressEnter(){
+    public ProductListPage pressEnter(){
         sendKeysToElement(searchInput, Keys.ENTER); //TODO create another method to simulate user interactions like Enter
-        return new SearchPage(driver);
+        return new ProductListPage(driver);
     }
 
     public HeaderComponent getHeaderComponent() {
