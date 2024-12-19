@@ -1,6 +1,7 @@
 package com.solvd.example.web.utils;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -19,7 +20,7 @@ public class WebDriverProvider {
 
     public static void openBrowser() {
         try {
-            WebDriver webDriver = new RemoteWebDriver(new URL("http://localhost:4444"), new FirefoxOptions());
+            WebDriver webDriver = new RemoteWebDriver(new URL("http://localhost:4444"), new ChromeOptions());
             webDriver.manage().window().maximize();
             driver.set(webDriver);
         }catch (MalformedURLException e) {

@@ -18,6 +18,9 @@ public class HeaderComponent extends AbstractComponent {
     @FindBy(xpath = ".//li/a")
     private List<WebElement> linkList;
 
+    @FindBy(xpath = ".//li/a[text()=' Logged in as ']")
+    private WebElement loggedMessage;
+
     public HeaderComponent(WebElement root) {
         super(root);
     }
@@ -44,6 +47,10 @@ public class HeaderComponent extends AbstractComponent {
     public LoginPage openLoginPage(){
         clickOnLink(LinkNames.LOGIN);
         return new LoginPage(WebDriverProvider.getDriver());
+    }
+
+    public boolean isLoggedMessageDisplayed(){
+        return loggedMessage.isDisplayed();
     }
 
 }

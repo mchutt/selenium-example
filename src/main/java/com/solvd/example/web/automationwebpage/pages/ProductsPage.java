@@ -4,8 +4,6 @@ import com.solvd.example.web.automationwebpage.components.ProductCardComponent;
 import com.solvd.example.web.utils.AbstractBasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -34,11 +32,11 @@ public class ProductsPage extends AbstractBasePage {
     }
 
     public void typeTextInSearchInput(String text) {
-        searchInput.sendKeys(text);
+        sendKeysToElement(searchInput, text);
     }
 
     public void clickOnSubmitSearchButton() {
-        submitSearchButton.click();
+        clickElement(submitSearchButton);
     }
 
     public boolean isAllProductsTitleDisplayed(){
