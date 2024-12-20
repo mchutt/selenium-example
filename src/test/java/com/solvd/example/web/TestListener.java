@@ -24,8 +24,7 @@ public class TestListener implements ITestListener {
         try {
             takeScreenshot(WebDriverProvider.getDriver(), result.getName());
         } catch (Exception e) {
-            logger.error("Error when trying to take a screenshot for the test: '{}'", result.getName());
-            throw new RuntimeException(e);
+            logger.error("Error when trying to take a screenshot for the test: '{}'. {}", result.getName(), e.getMessage());
         }
     }
 

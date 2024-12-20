@@ -16,9 +16,9 @@ import static com.solvd.example.web.utils.WebDriverProvider.getDriver;
 
 public class AutomationTest extends AbstractTest {
 
-    private static final String userPassword = "123456789";
+    private static final String USER_PASSWORD = "123456789";
 
-    private static final String userEmail = "mateo@mateo.com";
+    private static final String USER_EMAIL = "mateo@mateo.com";
 
     @Test
     public void searchAProductTest() {
@@ -44,7 +44,7 @@ public class AutomationTest extends AbstractTest {
     }
 
     @Test
-    public void registerUserWithAnExistingEmail() {
+    public void registerUserWithAnExistingEmailTest() {
 
         HomePage homePage = new HomePage(getDriver());
         homePage.openPage("http://automationexercise.com");
@@ -60,7 +60,7 @@ public class AutomationTest extends AbstractTest {
     }
 
     @Test
-    public void loginWithAnIncorrectEmailAndPassword() {
+    public void loginWithAnIncorrectEmailAndPasswordTest() {
         HomePage homePage = new HomePage(getDriver());
         homePage.openPage("http://automationexercise.com");
 
@@ -75,7 +75,7 @@ public class AutomationTest extends AbstractTest {
     }
 
     @Test
-    public void addProductToTheCart() {
+    public void addProductToTheCartTest() {
         HomePage homePage = new HomePage(getDriver());
         homePage.openPage("http://automationexercise.com");
 
@@ -103,8 +103,8 @@ public class AutomationTest extends AbstractTest {
         //Login
         LoginPage loginPage = homePage.getHeader().openLoginPage();
         LoginFormComponent loginForm = loginPage.getLoginForm();
-        loginForm.typeInEmailInput(userEmail);
-        loginForm.typeInPasswordInput(userPassword);
+        loginForm.typeInEmailInput(USER_EMAIL);
+        loginForm.typeInPasswordInput(USER_PASSWORD);
         loginForm.clickOnLoginButton();
 
         boolean isloggedMessageDisplayed = homePage.getHeader().isLoggedMessageDisplayed();
